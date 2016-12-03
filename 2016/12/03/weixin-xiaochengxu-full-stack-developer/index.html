@@ -1,0 +1,734 @@
+
+ <!DOCTYPE HTML>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  
+    <title>微信小程序-新手另类上手方法 | 荒诞的无聊</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1,user-scalable=no">
+    
+    <meta name="author" content="宋鹏">
+    
+
+    
+    <meta name="description" content="学习更有效率=足够好的方法论+花费我的命+认识到认知偏差
+
+方法论需要不断寻找收集，如果把大脑类比为计算机，那么我们要将学习到的更好的方法论更新到自己的系统里；
+
+命=时间_ ，说白了就是你愿不愿意拿出你的一部分生命放在学习某个技能上；
+
+认知偏差，比如说大部分常见的、我们知道的、觉得难学的技能，并没有想象中那么难（我可没说简单），需要你花费一部分生命的，你愿意么？
+
+
+陪伴在路上的全栈工程师！">
+<meta property="og:type" content="article">
+<meta property="og:title" content="微信小程序-新手另类上手方法">
+<meta property="og:url" content="http://yoursite.com/2016/12/03/weixin-xiaochengxu-full-stack-developer/index.html">
+<meta property="og:site_name" content="荒诞的无聊">
+<meta property="og:description" content="学习更有效率=足够好的方法论+花费我的命+认识到认知偏差
+
+方法论需要不断寻找收集，如果把大脑类比为计算机，那么我们要将学习到的更好的方法论更新到自己的系统里；
+
+命=时间_ ，说白了就是你愿不愿意拿出你的一部分生命放在学习某个技能上；
+
+认知偏差，比如说大部分常见的、我们知道的、觉得难学的技能，并没有想象中那么难（我可没说简单），需要你花费一部分生命的，你愿意么？
+
+
+陪伴在路上的全栈工程师！">
+<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/2318322-eb2af106e2429145.JPG?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/2318322-2518e8ff7f217db9.JPG?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/2318322-f932097f19689d06.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/2318322-f57c52376178fee6.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/2318322-23ada7bdf5fc0abf.JPG?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/2318322-b92b393eb1ceb926.JPG?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:updated_time" content="2016-12-03T02:12:28.021Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="微信小程序-新手另类上手方法">
+<meta name="twitter:description" content="学习更有效率=足够好的方法论+花费我的命+认识到认知偏差
+
+方法论需要不断寻找收集，如果把大脑类比为计算机，那么我们要将学习到的更好的方法论更新到自己的系统里；
+
+命=时间_ ，说白了就是你愿不愿意拿出你的一部分生命放在学习某个技能上；
+
+认知偏差，比如说大部分常见的、我们知道的、觉得难学的技能，并没有想象中那么难（我可没说简单），需要你花费一部分生命的，你愿意么？
+
+
+陪伴在路上的全栈工程师！">
+<meta name="twitter:image" content="http://upload-images.jianshu.io/upload_images/2318322-eb2af106e2429145.JPG?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+
+    
+    <link rel="alternative" href="/atom.xml" title="荒诞的无聊" type="application/atom+xml">
+    
+    
+    <link rel="icon" href="/img/favicon.ico">
+    
+    
+    <link rel="apple-touch-icon" href="/img/jacman.jpg">
+    <link rel="apple-touch-icon-precomposed" href="/img/jacman.jpg">
+    
+    <link rel="stylesheet" href="/css/style.css">
+</head>
+
+  <body>
+    <header>
+      
+<div>
+		
+			<div id="imglogo">
+				<a href="/"><img src="/img/logo.png" alt="荒诞的无聊" title="荒诞的无聊"/></a>
+			</div>
+			
+			<div id="textlogo">
+				<h1 class="site-name"><a href="/" title="荒诞的无聊">荒诞的无聊</a></h1>
+				<h2 class="blog-motto">WRITING 1990 WORDS A DAY CHANGES MY LIFE</h2>
+			</div>
+			<div class="navbar"><a class="navbutton navmobile" href="#" title="菜单">
+			</a></div>
+			<nav class="animated">
+				<ul>
+					<ul>
+					 
+						<li><a href="/">Home</a></li>
+					
+						<li><a href="/archives">Archives</a></li>
+					
+						<li><a href="/about">About</a></li>
+					
+					<li>
+ 					
+					<form class="search" action="//google.com/search" method="get" accept-charset="utf-8">
+						<label>Search</label>
+						<input type="search" id="search" name="q" autocomplete="off" maxlength="20" placeholder="搜索" />
+						<input type="hidden" name="q" value="site:yoursite.com">
+					</form>
+					
+					</li>
+				</ul>
+			</nav>			
+</div>
+    </header>
+    <div id="container">
+      <div id="main" class="post" itemscope itemprop="blogPost">
+  
+	<article itemprop="articleBody"> 
+		<header class="article-info clearfix">
+  <h1 itemprop="name">
+    
+      <a href="/2016/12/03/weixin-xiaochengxu-full-stack-developer/" title="微信小程序-新手另类上手方法" itemprop="url">微信小程序-新手另类上手方法</a>
+  </h1>
+  <p class="article-author">By
+       
+		<a href="/about" title="宋鹏" target="_blank" itemprop="author">宋鹏</a>
+		
+  <p class="article-time">
+    <time datetime="2016-12-03T00:12:36.000Z" itemprop="datePublished"> 发表于 2016-12-03</time>
+    
+  </p>
+</header>
+	<div class="article-content">
+		
+		<div id="toc" class="toc-article">
+			<strong class="toc-title">文章目录</strong>
+		
+			<ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#一、第一篇文章摘录"><span class="toc-number">1.</span> <span class="toc-text">一、第一篇文章摘录</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#二、第二篇文章摘录"><span class="toc-number">2.</span> <span class="toc-text">二、第二篇文章摘录</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#“方法"><span class="toc-number">2.1.</span> <span class="toc-text">“方法</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#原理"><span class="toc-number">2.2.</span> <span class="toc-text">原理</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#三、第三篇文章摘录"><span class="toc-number">3.</span> <span class="toc-text">三、第三篇文章摘录</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#四、学习笔记"><span class="toc-number">4.</span> <span class="toc-text">四、学习笔记</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#小提示"><span class="toc-number">4.1.</span> <span class="toc-text">小提示</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#微信小程序"><span class="toc-number">4.2.</span> <span class="toc-text">微信小程序</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#收集资料："><span class="toc-number">4.2.1.</span> <span class="toc-text">收集资料：</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#制定学习计划"><span class="toc-number">4.2.2.</span> <span class="toc-text">制定学习计划</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#五、如果你还是迟迟没有动手，那么往下看，三分钟时间。"><span class="toc-number">5.</span> <span class="toc-text">五、如果你还是迟迟没有动手，那么往下看，三分钟时间。</span></a></li></ol>
+		
+		</div>
+		
+		<p><img src="http://upload-images.jianshu.io/upload_images/2318322-eb2af106e2429145.JPG?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt=""></p>
+<p>学习更有效率=足够好的<strong>方法论</strong>+花费我的<strong>命</strong>+认识到<strong>认知偏差</strong></p>
+<ul>
+<li><p><strong>方法论</strong>需要不断寻找收集，如果把大脑类比为计算机，那么我们要将学习到的更好的方法论更新到自己的系统里；</p>
+</li>
+<li><p><strong>命</strong>=时间_ ，说白了就是你愿不愿意拿出你的一部分生命放在学习某个技能上；</p>
+</li>
+<li><p><strong>认知偏差</strong>，比如说大部分常见的、我们知道的、觉得难学的技能，并没有想象中那么难（我可没说简单），需要你花费一部分生命的，你愿意么？</p>
+</li>
+</ul>
+<p>陪伴在路上的全栈工程师！</p>
+<h2 id="一、第一篇文章摘录"><a href="#一、第一篇文章摘录" class="headerlink" title="一、第一篇文章摘录"></a>一、第一篇文章摘录</h2><blockquote>
+<p>《新人上手 Python 另类建议——被和谐了的答案》</p>
+<p>文章摘自微信公众号「Lazy-Thought」懒人在思考</p>
+<p>几个黑客在维护，都很懒，都想改变点什么</p>
+</blockquote>
+<p>“前晚在知乎心血来潮做了个回答，昨天凌晨就被和谐了，被和谐的原因是：</p>
+<p>涉及淫秽色情低俗信息</p>
+<p>那个网站在国内存在了很久很久，尺度大了点罢。我把原回答放到这，大家自己判断吧：<br><img src="http://upload-images.jianshu.io/upload_images/2318322-2518e8ff7f217db9.JPG?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt=""><br>基于 Scrapy 你写个爬虫，爬 rosioo.com，很简单，但是，需要会员的部分就需要动点小技巧了，你先爬，有机会我告诉你…</p>
+<p>动力有了没？不难了吧？</p>
+<p><strong>一本正经下：</strong> 动力是做好任何事务的前提，我记得大学时，C那本书我看了N遍，然而我还是不熟C，原因很简单，当时没找到我感兴趣的实战场景。你可以想象下，当年大学编程教程里的那些例子具备多大的创新杀伤力，索然无味（不知道现在是否有所改善）。</p>
+<p>真正让我有突破在于，我用掌握的语言去做了些感兴趣的“坏”事，打破规则的事。</p>
+<p>当你对这个世界越发了解时，你就拥有常人无法比拟的想象力，这种想象力是你动力的源泉。很多人停滞迷茫的最本质就在这。这就是为什么很多过来人会说：</p>
+<p>你最大的问题是想得太多，而做得太少。</p>
+<p>或者</p>
+<p>想象力成为你前进的最大瓶颈。</p>
+<p>可以好好琢磨琢磨下，这两句话。</p>
+<p>……”</p>
+<blockquote>
+<p><a href="http://mp.weixin.qq.com/s?__biz=MzA3NTEzMTUwNA==&amp;mid=2651081156&amp;idx=1&amp;sn=3c2849f3e7753c1359db253da13aa732&amp;chksm=8485d6dbb3f25fcd1380bc2f7d9b988585a4e028df67f866660be82dc2ad0af07e08e69c5328&amp;scene=4#wechat_redirect" target="_blank" rel="external">阅读原文</a></p>
+</blockquote>
+<h2 id="二、第二篇文章摘录"><a href="#二、第二篇文章摘录" class="headerlink" title="二、第二篇文章摘录"></a>二、第二篇文章摘录</h2><blockquote>
+<p>《如何在五天内快速 “学会” 一门技能》</p>
+<p>微信公众号 「xinshengdaxue」 新生大学 </p>
+<p>学习学习再学习，七年就是一辈子……</p>
+</blockquote>
+<h3 id="“方法"><a href="#“方法" class="headerlink" title="“方法"></a>“方法</h3><p>我先讲结论方法。</p>
+<p>假设你初入门，要去学一门技术。那么：</p>
+<ol>
+<li><p>How：去找专家的 “实作方法” 课、“实作方法” 书，快速地跟着 TA 做。（请先一模一样地跟着做，不要自作聪明地改，也不要去问为什么。）</p>
+</li>
+<li><p>What：接着把 “成果” 做一点小修改，看看会不会有效果。</p>
+</li>
+<li><p>Why：把东西改得有效果了以后，再去查 Why。</p>
+</li>
+</ol>
+<p>五天都重复这样的循环，你就会了，至少能掌握这门学问的 60%。我保证，就这么简单。</p>
+<p>前提是：在前三个小时里，你能按捺住你的好奇心，别问 Why 与 What。否则你学五个月都学不出来。</p>
+<h3 id="原理"><a href="#原理" class="headerlink" title="原理"></a>原理</h3><p>……”</p>
+<blockquote>
+<p><a href="http://mp.weixin.qq.com/s?__biz=MzAwMDgyMTA3Mg==&amp;mid=2650056207&amp;idx=1&amp;sn=2b0fca302fbdc588c77b1e0cd82b7769&amp;scene=0#wechat_redirect" target="_blank" rel="external">阅读原文</a></p>
+</blockquote>
+<h2 id="三、第三篇文章摘录"><a href="#三、第三篇文章摘录" class="headerlink" title="三、第三篇文章摘录"></a>三、第三篇文章摘录</h2><blockquote>
+<p>《我的世界观（二）》</p>
+<p>文章摘自微信公众号「Lazy-Thought」懒人在思考</p>
+<p>几个黑客在维护，都很懒，都想改变点什么</p>
+</blockquote>
+<p>一门新知识。</p>
+<ol>
+<li><p>了解这门知识的概要轮廓（大概了解：是什么、能做什么、为什么会存在）。</p>
+</li>
+<li><p>哪个群体创造/发展的这个知识，这个群体背后的八卦是什么（比如微积分，莱布尼茨和牛顿的八卦），看八卦能更好理解牛人们的思维。</p>
+</li>
+<li><p>原来是这样一门有趣的知识呀，开始深入学习。</p>
+</li>
+<li><p>查遍全球关键资料，我可不想听一家之言。</p>
+</li>
+<li><p>了解这门知识的关联知识是什么。</p>
+</li>
+<li><p>心中了然了，原来这门知识是这样的，还有几个XX问题没解决。</p>
+</li>
+<li><p>运用知识创造出有趣的或以前不存在的东西，如果能解决几个没解决的XX问题最好。</p>
+</li>
+<li><p>一抖身加入这个知识所在的圈子，成为圈内人。</p>
+</li>
+<li><p>用跨界思维给这个圈子带来新鲜感，成为圈内认可的人。</p>
+</li>
+</ol>
+<p>能运用这样的方法论算是一门大知识了，如果是小点的，少其中几步就行。</p>
+<p>另外我再分享另一种思想：别着急什么都去学，把你最喜欢的最擅长的搞精通，就能悟“道”，这种“道”正是上面所说的“方法论”，它能让你快速掌握其他知识，从而加速扩充你的知识面。</p>
+<blockquote>
+<p><a href="http://mp.weixin.qq.com/s?__biz=MzA3NTEzMTUwNA==&amp;mid=200044901&amp;idx=1&amp;sn=2a40b65874b54f7d2c80303ee6558d9b&amp;scene=20#wechat_redirect" target="_blank" rel="external">阅读原文</a></p>
+</blockquote>
+<h2 id="四、学习笔记"><a href="#四、学习笔记" class="headerlink" title="四、学习笔记"></a>四、学习笔记</h2><h3 id="小提示"><a href="#小提示" class="headerlink" title="小提示"></a>小提示</h3><p>做笔记的正确方式，千万不要<strong>仅仅</strong>把原文内容抄一遍。当然抄一遍或复制一份是可以的，但一定要写一些自己的思路、思考、感想、总结等，哪怕只有一个词，也是好的。这么做的原因是跟我们的<strong>*大脑运作原理</strong>有关。感兴趣的请google</p>
+<p>针对上面三篇文章，我的判断是，这是我目前学习到的超棒的三个学习方法论，可以说有了这三个学习方法论，我就有自信用一年时间成长为一名全栈工程师。</p>
+<p>在做到完全理解这三个方法论的前提下，马上开始动手实践，做就牛。</p>
+<ul>
+<li><p>第一篇文章：最重要目的是赶紧找个让自己有强烈动力的实践目标，如：打造自己的作品，比如给每个咖啡馆 或 景点 或 便利店 或 超市 或 餐馆 或 个人品牌等， 做个微信小程序。</p>
+</li>
+<li><p>第二篇文章的最重要目的是消除学习一门技能的认知偏差，避免半途而废。因为大部分人在大部分情况下，半途而废的原因是方法不合理且没有意识到方法不合理，所以在一只脚刚入门，另外一只脚刚抬起来就被一盆冷水砸的崩溃了，亲身经历，相信我你并不孤独。陪伴在路上的全栈工程师。</p>
+</li>
+<li><p>第三篇文章的最重要目的是有个大局观，或者说是建立系统，当你埋头苦干数日，日拱一卒确实不易。时不时的跳出来，站在足够高的高处看看自己和周围环境，思路自然会清晰很多。<strong>结合这个方法论的9条，逐条找到属于自己的答案，答案是动态更新的。</strong></p>
+</li>
+</ul>
+<p>在学习一门技能的路上，这三篇文章中的核心方法论，缺一不可。</p>
+<p>做就牛，难道不是么？</p>
+<p>为了实践这三篇文章的方法论，我和东哥来了个一个月时间对赌：</p>
+<ul>
+<li>对赌期限：2016/08/15~2016/09/15；</li>
+<li>对赌内容：我做个网站并上线，东哥弹唱一首尤克里里歌曲（指弹，而非扫弦）；</li>
+<li>对赌条件：<strong>为自己吹过的牛逼负责</strong>。如果你还有着一颗年轻的心，那么这一句话，就够了！</li>
+</ul>
+<p>作品展示：</p>
+<ul>
+<li><p>我制作的网站：www.xiaotongalley.com（不要使用手机访问），提示，<strong>千万不要用手机访问</strong>，因为网站刚上线5天就被攻击篡改了，<strong>目前只能用电脑访问</strong>。直接上图：</p>
+<ul>
+<li><p>网站1.0版：<br><img src="http://upload-images.jianshu.io/upload_images/2318322-f932097f19689d06.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt=""></p>
+</li>
+<li><p>网站2.0版：<br><img src="http://upload-images.jianshu.io/upload_images/2318322-f57c52376178fee6.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt=""></p>
+</li>
+</ul>
+</li>
+</ul>
+<ul>
+<li>东哥的尤克里里弹唱：<a href="http://v.qq.com/x/page/r03212p1u6o.html" target="_blank" rel="external">视频-同桌的你-指弹</a></li>
+</ul>
+<h3 id="微信小程序"><a href="#微信小程序" class="headerlink" title="微信小程序"></a>微信小程序</h3><p>通过一个月时间的实践，我们的判断是这些方法论是很有效的。当我还在考虑下一个阶段学习什么的时候，2016/9/21 微信小程序开始内侧，并开放开发文档、设计指南和开发者工具，我的判断是趋势来了，我要拥抱趋势，这样我才可以成长的更快。所以我马上开始进行下一个阶段的准备工作，<strong>收集资料</strong>和<strong>制定学习计划</strong>，在这个过程中我发现，通过以微信小程序开发为核心技能和突破口，我的判断是用一年时间可以成为一名全栈工程师。具体如下：</p>
+<h4 id="收集资料："><a href="#收集资料：" class="headerlink" title="收集资料："></a>收集资料：</h4><ul>
+<li><p>相关文章：至少看一遍，你一定会有收获的</p>
+<ul>
+<li><p><a href="http://mp.weixin.qq.com/s?__biz=MjM5ODQwMjA4MA==&amp;mid=2649293626&amp;idx=1&amp;sn=49f8f44e3aff8ac5e4e9766c11a97e07&amp;chksm=bed6e27589a16b639451bc5dd9f2dedae657e31619f672abde7cd8d97c46bf4519e5e5788fa1&amp;scene=4#wechat_redirect" target="_blank" rel="external">《关于微信小程序（应用号），我能透露的几个细节》</a></p>
+</li>
+<li><p><a href="http://mp.weixin.qq.com/s?__biz=MjM5MDE0Mjc4MA==&amp;mid=2650994338&amp;idx=1&amp;sn=2f2f3865c2c1eab6db0672eb6519e37b&amp;chksm=bdbf0ef18ac887e7231b1601cb06d18633836278a96d309c5c4998ff142bb7b778e4819b95fa&amp;scene=0#wechat_redirect" target="_blank" rel="external">《微信小程序来了，产品和运营就不需要跪求程序员了？》</a></p>
+</li>
+<li><p><a href="http://mp.weixin.qq.com/s?__biz=MjM5ODQwMjA4MA==&amp;mid=2649293636&amp;idx=1&amp;sn=518e1004aeef4294eaadef59364f802f&amp;chksm=bed6e20b89a16b1d19995bda37ee2816a2cff1c6ab02cfcc4d6afec0a3b987778aad4239c2c2&amp;scene=0#rd" target="_blank" rel="external">《为什么你觉得只开发微信号是不行的？》</a></p>
+</li>
+<li><p>参考：<a href="https://www.zhihu.com/question/22646257" target="_blank" rel="external">知乎：HTML、CSS、JavaScript、PHP、 MySQL 的学习顺序是什么？</a> </p>
+</li>
+</ul>
+</li>
+</ul>
+<h4 id="制定学习计划"><a href="#制定学习计划" class="headerlink" title="制定学习计划"></a>制定学习计划</h4><blockquote>
+<p>你说什么！都读到这了，你还没有点开微信小程序开发文档和小程序设计指南么？还不赶紧的，做就牛！</p>
+</blockquote>
+<ul>
+<li>2016/09/21~2017/09/21：成为全栈工程师一年计划</li>
+</ul>
+<ol>
+<li><p>微信小程序：2016/09/21~2016/11/21</p>
+<ul>
+<li><p>熟练掌握小程序开发的各个环节；由于我是零基础开始学习编程，所以跟着趋势跑，进步速度才会更快，就好比坐上火箭。而当下这个时间节点，微信小程序开发满足我的需求，以此为切入点，积累我的技术栈；</p>
+</li>
+<li><p><a href="https://mp.weixin.qq.com/debug/wxadoc/dev/index.html" target="_blank" rel="external">微信小程序开发文档</a></p>
+</li>
+<li><p><a href="https://mp.weixin.qq.com/debug/wxadoc/design/index.html" target="_blank" rel="external">小程序设计指南</a></p>
+</li>
+<li><p><a href="https://mp.weixin.qq.com/debug/wxadoc/dev/devtools/download.html" target="_blank" rel="external">小程序开发者工具</a></p>
+</li>
+<li><p><a href="https://www.qcloud.com/act/event/yingyonghao.html?utm_source=qcloudbanner&amp;utm_medium=banner1&amp;utm_campaign=qcloud" target="_blank" rel="external">腾讯云-从搭建一个微信小程序开始</a></p>
+</li>
+<li><p><a href="https://github.com/CFETeam" target="_blank" rel="external">github-腾讯</a></p>
+</li>
+<li><p><a href="https://www.zhihu.com/question/20070065" target="_blank" rel="external">知乎-怎样使用 GitHub？</a></p>
+</li>
+</ul>
+</li>
+<li><p>HTML 和 CSS：2016/08/21~2016/09/15</p>
+<ul>
+<li><p>由于我在微信小程序开放之前，已经用了一个月时间学习 HTML 和 CSS，所以呢，可以把更多的时间去学习微信小程序开发，如果你没有任何这方面的基础，那么我建议 HTML、CSS 和微信小程序开发同步学习；</p>
+</li>
+<li><p>学习 HTML 和 CSS， 这两个东西是一套的, 非常容易理解, 把w3school上面的教程过一遍就会了, 记住要一个个过, 千万不要偷懒, 一旦开始偷懒, 你会越来越偷懒, 最后什么都没学成。</p>
+</li>
+<li><p>在线教程：<a href="http://w3school.com.cn/html/index.asp" target="_blank" rel="external">HTML 教程</a>，<a href="http://w3school.com.cn/css/index.asp" target="_blank" rel="external"> CSS 教程</a>；</p>
+</li>
+<li><p>书籍（有kindle电子版）：<a href="https://www.amazon.cn/HTML5%E4%B8%8ECSS3%E5%9F%BA%E7%A1%80%E6%95%99%E7%A8%8B-%E5%8D%A1%E6%96%AF%E7%89%B9%E7%BD%97/dp/B00K58535O/ref=sr_1_2?ie=UTF8&amp;qid=1476687966&amp;sr=8-2&amp;keywords=HTML" target="_blank" rel="external">《HTML5与CSS3基础教程(第8版》) </a></p>
+</li>
+</ul>
+</li>
+<li><p>JavaScript：2016/09/21~2017/09/21</p>
+<ul>
+<li><p>在学习微信小程序时我就开始学习 JavaScript，你可能会问这么做同一时间是不是学习任务太多了，我是这样考虑的，以微信开发文档为主要学习突破口，如果遇到搞不懂的并且跟 JavaScript 有关系，那么我就会去查查相应教程，就好像查字典一样，你没必要马上去读完整部字典。</p>
+</li>
+<li><p>学 JavaScript, JavaScript 相比前 HTML 和 CSS 会难的多, 因为 JavaScript 才是一门正式的编程语言,</p>
+</li>
+<li><p>同样, w3school 的教程全过一遍, <a href="http://w3school.com.cn/js/index.asp" target="_blank" rel="external">JavaScript 教程</a>       </p>
+</li>
+<li><p>教程过完了就可以买书看了, 强烈推荐一本超好入门书: <a href="http://item.jd.com/10603153.html" target="_blank" rel="external">《JavaScript DOM编程艺术（第2版）》</a> (Jeremy Keith，Jeffrey Sambells)【摘要 书评 试读】 , 认真学, 多看</p>
+</li>
+<li><p>看完之后学jquery, 这个时候你基本能够了解语言库了, jquery 也直接过一遍w3school的教程, <a href="http://w3school.com.cn/jquery/index.asp" target="_blank" rel="external">jQuery 教程</a>。</p>
+</li>
+<li><p>jquery会了, 基本上你网页开发前端就已经入门了, 如果你学的扎实, 反复的看, 其实你就可以胜任前端开发的工作了, 不过浏览器兼容性还是解决不了的, 不过你目标不是前端工程师, 浏览器的兼容性不了解也无所谓.</p>
+</li>
+</ul>
+</li>
+<li><p>ajax：2016/11/21~2017/09/21</p>
+<ul>
+<li>在你学习 JavaScript 的时候, 你可能就接触一些后端的东西, 没错, 就是 ajax。这个是需要后端返回数据的。这个时候你要开始学习php了, 入门php相比于js会更麻烦一些, 因为运行php需要有很多细节要处理, 所以一本好的入门书籍是非常重要的, 这个w3school上面的php帮不了什么忙了, 推荐一本书: <a href="http://item.jd.com/10059047.html" target="_blank" rel="external">《php和mysql web开发（原书第4版）》</a> ([澳]威利，[澳]汤姆森)；</li>
+</ul>
+</li>
+</ol>
+<p>一些注意点，学习HTML，css，JavaScript的时候, 只要有浏览器就够了, 不需要装wamp, 编辑器推荐sublime，多用google， 多敲代码，尤其是多敲代码非常重要，不敲代码你什么都学不会。 其他的想起来再补充吧。</p>
+<p>对于那些说加入xxx阵营的，不要理他们，直接在window上面学, php和apache对window的兼容性非常好, 完全可以从入门学到精通都无需碰linux。当然， 如果你网站最终上线的话，还是需要接触linux服务器进行部署。这个到需要部署的时候再说, 提前接触linux就是浪费时间。</p>
+<p>如果你有耐心坚持个一年以上的话, 我会推荐HTML，css，JavaScript，apache，php，mysql</p>
+<p>后三者是需要装软件的, 推荐wamp, 绝佳的一站式环境配置, WampServer, the web development platform on Windows 直接包括了apache, php, mysql三个软件, 省的自己一个一个装。</p>
+<p>有不少人在评论里问mac os下对应的软件, 这里补充一下: XAMPP Installers and Downloads for Apache Friends</p>
+<p>参考资料：</p>
+<ul>
+<li><p>知乎：<a href="https://www.zhihu.com/question/22646257" target="_blank" rel="external">HTML、CSS、JavaScript、PHP、 MySQL 的学习顺序是什么？</a> 落忧 程序员 的回答<br>收录于 编辑推荐 •7304 人赞同 编辑于 2014-02-16 323 条评论 感谢</p>
+</li>
+<li><p>学习程序开发的过程中，英语阅读能力问题顺便就搞定了，辅助阅读材料<a href="http://xiaolai.li/2016/06/11/makecs-appendix01/" target="_blank" rel="external">《十分钟后开始使用英语》</a>；</p>
+</li>
+<li><p>可能：UI、摄影、后期处理的基本技能也学了；</p>
+</li>
+</ul>
+<h2 id="五、如果你还是迟迟没有动手，那么往下看，三分钟时间。"><a href="#五、如果你还是迟迟没有动手，那么往下看，三分钟时间。" class="headerlink" title="五、如果你还是迟迟没有动手，那么往下看，三分钟时间。"></a>五、如果你还是迟迟没有动手，那么往下看，三分钟时间。</h2><p>如果你没有编程基础，或者编程基础不够稳固，那么我推荐的方法是用 Markdown（<a href="Markdown使用方法，我的笔记文章链接">使用方法</a>） 把微信 <a href="https://mp.weixin.qq.com/wiki?t=resource/res_main&amp;id=mp1474632113_xQVCl&amp;token=&amp;lang=zh_CN" target="_blank" rel="external">小程序开发文档和小程序设计指南</a> 从头到位打字一遍。</p>
+<p>遇到不认识的单词，直接查询，并标注在相应段落，如：</p>
+<p><img src="http://upload-images.jianshu.io/upload_images/2318322-23ada7bdf5fc0abf.JPG?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt=""></p>
+<p>这么做的好处是:</p>
+<ul>
+<li><p>对于编程经验少、打字速度慢、不熟悉 Markdown 的我来说，可以更有效率的熟悉乃至上手，打字的过程中 眼、手、脑都在动；</p>
+</li>
+<li><p>太多细节之处是我第一遍看的时候没有注意到的，而动手打字的过程中，好多问题自然而然的解决了，比如如何在 Markdown 中制作表格、组件怎么使用等；</p>
+</li>
+<li><p>英语阅读能力越来越好，开发者文档写作格式越写越好，等等等，一箭多雕。</p>
+</li>
+<li><p>带着思考，在打字的过程中你会发现很多规律性的词汇、代码结构等，当你感受到越来越多的规律时，那么恭喜你，你大脑里的<strong>工作记忆区</strong>（思考和意识区域）里的知识开始进入<strong>长期记忆区</strong>（事实性和过程性知识）。这种规律或者说联系越来越多后，你想要忘记都难，还有就是随时随地地任你快速使用。补充一点，<strong>工作记忆区</strong>容量远远小于<strong>长期记忆区</strong> 。这也解释了为啥刚开始学习新知识新技能时很吃力，需要一段时间才能渡过大脑不够用（就是学习区）的阶段。</p>
+</li>
+</ul>
+<blockquote>
+<p><img src="http://upload-images.jianshu.io/upload_images/2318322-b92b393eb1ceb926.JPG?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="大脑记忆的简化模型"><br>大脑记忆的简化模型</p>
+</blockquote>
+<p>工作记忆（working memory），简单来说，就是我们当前正在意识、思考的区域，比如你正在看这篇文章，这篇文章的信息以及你正在思考的内容，都在你的工作记忆中。</p>
+<p>长期记忆（long-term memory），顾名思义。我问你，你的初吻给了谁？你头脑中立马出现的那个人（搞不好是条哈士奇），这个过程就是信息从长期记忆提取到工作记忆的过程。在我问这个问题之前，这个信息没有在你的工作记忆中，它在你的长期记忆里。</p>
+<blockquote>
+<p>阅读原文：<a href="http://www.jianshu.com/p/fdbaf8ced079" target="_blank" rel="external">《不明白大脑如何运作，自学是无效的》</a></p>
+<p>延伸：动画片《头脑特工队 Inside Out (2015)》，要对自己好一些。</p>
+</blockquote>
+<p>参考文章：</p>
+<ul>
+<li><p>本人目前用的是有道云笔记，手机端和电脑端同步更新，支持的Markdown，可以满足需求；</p>
+</li>
+<li><p><a href="https://mp.weixin.qq.com/s?__biz=MzAwMDgyMTA3Mg==&amp;mid=2650056918&amp;idx=2&amp;sn=879dffff7b2604515eee7418047f8d16" target="_blank" rel="external">《可能是目前最全面的Markdown写作解决方案》</a> ；</p>
+</li>
+<li><p><a href="https://github.com/CFETeam/styleguide" target="_blank" rel="external">《文档与源码编写风格》</a> ——腾讯</p>
+</li>
+</ul>
+<p>饭每天都要吃，文章为啥不能再看一遍呢！</p>
+<hr>
+<p>陪伴在路上的全栈工程师，</p>
+  
+	</div>
+		<footer class="article-footer clearfix">
+<div class="article-catetags">
+
+
+  <div class="article-tags">
+  
+  <span></span> <a href="/tags/微信小程序/">微信小程序</a><a href="/tags/新手另类上手方法/">新手另类上手方法</a><a href="/tags/全栈工程师/">全栈工程师</a>
+  </div>
+
+</div>
+
+
+
+	<div class="article-share" id="share">
+	
+	  <div data-url="http://yoursite.com/2016/12/03/weixin-xiaochengxu-full-stack-developer/" data-title="微信小程序-新手另类上手方法 | 荒诞的无聊" data-tsina="null" class="share clearfix">
+	  </div>
+	
+	</div>
+
+
+</footer>
+
+   	       
+	</article>
+	
+<nav class="article-nav clearfix">
+ 
+ <div class="prev" >
+ <a href="/2016/12/03/hello-world/" title="Hello World">
+  <strong>上一篇：</strong><br/>
+  <span>
+  Hello World</span>
+</a>
+</div>
+
+
+</nav>
+
+	
+
+</div>  
+      <div class="openaside"><a class="navbutton" href="#" title="显示侧边栏"></a></div>
+
+  <div id="toc" class="toc-aside">
+  <strong class="toc-title">文章目录</strong>
+ 
+ <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#一、第一篇文章摘录"><span class="toc-number">1.</span> <span class="toc-text">一、第一篇文章摘录</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#二、第二篇文章摘录"><span class="toc-number">2.</span> <span class="toc-text">二、第二篇文章摘录</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#“方法"><span class="toc-number">2.1.</span> <span class="toc-text">“方法</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#原理"><span class="toc-number">2.2.</span> <span class="toc-text">原理</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#三、第三篇文章摘录"><span class="toc-number">3.</span> <span class="toc-text">三、第三篇文章摘录</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#四、学习笔记"><span class="toc-number">4.</span> <span class="toc-text">四、学习笔记</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#小提示"><span class="toc-number">4.1.</span> <span class="toc-text">小提示</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#微信小程序"><span class="toc-number">4.2.</span> <span class="toc-text">微信小程序</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#收集资料："><span class="toc-number">4.2.1.</span> <span class="toc-text">收集资料：</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#制定学习计划"><span class="toc-number">4.2.2.</span> <span class="toc-text">制定学习计划</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#五、如果你还是迟迟没有动手，那么往下看，三分钟时间。"><span class="toc-number">5.</span> <span class="toc-text">五、如果你还是迟迟没有动手，那么往下看，三分钟时间。</span></a></li></ol>
+ 
+  </div>
+
+<div id="asidepart">
+<div class="closeaside"><a class="closebutton" href="#" title="隐藏侧边栏"></a></div>
+<aside class="clearfix">
+
+  
+
+
+  
+
+  
+<div class="tagslist">
+	<p class="asidetitle">标签</p>
+		<ul class="clearfix">
+		
+			
+				<li><a href="/tags/微信小程序/" title="微信小程序">微信小程序<sup>1</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/新手另类上手方法/" title="新手另类上手方法">新手另类上手方法<sup>1</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/全栈工程师/" title="全栈工程师">全栈工程师<sup>1</sup></a></li>
+			
+		
+			
+		
+			
+		
+		</ul>
+</div>
+
+
+  <div class="linkslist">
+  <p class="asidetitle">友情链接</p>
+    <ul>
+        
+          <li>
+            
+            	<a href="https://coderq.com" target="_blank" title="一个面向程序员交流分享的新一代社区">码农圈</a>
+            
+          </li>
+        
+          <li>
+            
+            	<a href="http://wuchong.me" target="_blank" title="Jark&#39;s Blog">Jark&#39;s Blog</a>
+            
+          </li>
+        
+    </ul>
+</div>
+
+  
+
+
+  <div class="rsspart">
+	<a href="/atom.xml" target="_blank" title="rss">RSS 订阅</a>
+</div>
+
+  <div class="weiboshow">
+  <p class="asidetitle">新浪微博</p>
+    <iframe width="100%" height="119" class="share_self"  frameborder="0" scrolling="no" src="http://widget.weibo.com/weiboshow/index.php?language=&width=0&height=119&fansRow=2&ptype=1&speed=0&skin=9&isTitle=1&noborder=1&isWeibo=0&isFans=0&uid=null&verifier=b3593ceb&dpc=1"></iframe>
+</div>
+
+
+</aside>
+</div>
+    </div>
+    <footer><div id="footer" >
+	
+	<div class="line">
+		<span></span>
+		<div class="author"></div>
+	</div>
+	
+	
+	<section class="info">
+		<p> Hello ,I&#39;m Larry Page in Google. <br/>
+			This is my blog,believe it or not.</p>
+	</section>
+	 
+	<div class="social-font" class="clearfix">
+		
+		<a href="http://weibo.com/2176287895" target="_blank" class="icon-weibo" title="微博"></a>
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+	</div>
+			
+		
+
+		<p class="copyright">
+		Powered by <a href="http://hexo.io" target="_blank" title="hexo">hexo</a> and Theme by <a href="https://github.com/wuchong/jacman" target="_blank" title="Jacman">Jacman</a> © 2016 
+		
+		<a href="/about" target="_blank" title="宋鹏">宋鹏</a>
+		
+		
+		</p>
+</div>
+</footer>
+    <script src="/js/jquery-2.0.3.min.js"></script>
+<script src="/js/jquery.imagesloaded.min.js"></script>
+<script src="/js/gallery.js"></script>
+<script src="/js/jquery.qrcode-0.12.0.min.js"></script>
+
+<script type="text/javascript">
+$(document).ready(function(){ 
+  $('.navbar').click(function(){
+    $('header nav').toggleClass('shownav');
+  });
+  var myWidth = 0;
+  function getSize(){
+    if( typeof( window.innerWidth ) == 'number' ) {
+      myWidth = window.innerWidth;
+    } else if( document.documentElement && document.documentElement.clientWidth) {
+      myWidth = document.documentElement.clientWidth;
+    };
+  };
+  var m = $('#main'),
+      a = $('#asidepart'),
+      c = $('.closeaside'),
+      o = $('.openaside');
+  c.click(function(){
+    a.addClass('fadeOut').css('display', 'none');
+    o.css('display', 'block').addClass('fadeIn');
+    m.addClass('moveMain');
+  });
+  o.click(function(){
+    o.css('display', 'none').removeClass('beforeFadeIn');
+    a.css('display', 'block').removeClass('fadeOut').addClass('fadeIn');      
+    m.removeClass('moveMain');
+  });
+  $(window).scroll(function(){
+    o.css("top",Math.max(80,260-$(this).scrollTop()));
+  });
+  
+  $(window).resize(function(){
+    getSize(); 
+    if (myWidth >= 1024) {
+      $('header nav').removeClass('shownav');
+    }else{
+      m.removeClass('moveMain');
+      a.css('display', 'block').removeClass('fadeOut');
+      o.css('display', 'none');
+      
+      $('#toc.toc-aside').css('display', 'none');
+        
+    }
+  });
+});
+</script>
+
+<script type="text/javascript">
+$(document).ready(function(){ 
+  var ai = $('.article-content>iframe'),
+      ae = $('.article-content>embed'),
+      t  = $('#toc'),
+      ta = $('#toc.toc-aside'),
+      o  = $('.openaside'),
+      c  = $('.closeaside');
+  if(ai.length>0){
+    ai.wrap('<div class="video-container" />');
+  };
+  if(ae.length>0){
+   ae.wrap('<div class="video-container" />');
+  };
+  c.click(function(){
+    ta.css('display', 'block').addClass('fadeIn');
+  });
+  o.click(function(){
+    ta.css('display', 'none');
+  });
+  $(window).scroll(function(){
+    ta.css("top",Math.max(140,320-$(this).scrollTop()));
+  });
+});
+</script>
+
+
+<script type="text/javascript">
+$(document).ready(function(){ 
+  var $this = $('.share'),
+      url = $this.attr('data-url'),
+      encodedUrl = encodeURIComponent(url),
+      title = $this.attr('data-title'),
+      tsina = $this.attr('data-tsina'),
+      description = $this.attr('description');
+  var html = [
+  '<div class="hoverqrcode clearfix"></div>',
+  '<a class="overlay" id="qrcode"></a>',
+  '<a href="https://www.facebook.com/sharer.php?u=' + encodedUrl + '" class="article-share-facebook" target="_blank" title="Facebook"></a>',
+  '<a href="https://twitter.com/intent/tweet?url=' + encodedUrl + '" class="article-share-twitter" target="_blank" title="Twitter"></a>',
+  '<a href="#qrcode" class="article-share-qrcode" title="微信"></a>',
+  '<a href="http://widget.renren.com/dialog/share?resourceUrl=' + encodedUrl + '&srcUrl=' + encodedUrl + '&title=' + title +'" class="article-share-renren" target="_blank" title="人人"></a>',
+  '<a href="http://service.weibo.com/share/share.php?title='+title+'&url='+encodedUrl +'&ralateUid='+ tsina +'&searchPic=true&style=number' +'" class="article-share-weibo" target="_blank" title="微博"></a>',
+  '<span title="Share to"></span>'
+  ].join('');
+  $this.append(html);
+
+  $('.hoverqrcode').hide();
+
+  var myWidth = 0;
+  function updatehoverqrcode(){
+    if( typeof( window.innerWidth ) == 'number' ) {
+      myWidth = window.innerWidth;
+    } else if( document.documentElement && document.documentElement.clientWidth) {
+      myWidth = document.documentElement.clientWidth;
+    };
+    var qrsize = myWidth > 1024 ? 200:100;
+    var options = {render: 'image', size: qrsize, fill: '#2ca6cb', text: url, radius: 0.5, quiet: 1};
+    var p = $('.article-share-qrcode').position();
+    $('.hoverqrcode').empty().css('width', qrsize).css('height', qrsize)
+                          .css('left', p.left-qrsize/2+20).css('top', p.top-qrsize-10)
+                          .qrcode(options);
+  };
+  $(window).resize(function(){
+    $('.hoverqrcode').hide();
+  });
+  $('.article-share-qrcode').click(function(){
+    updatehoverqrcode();
+    $('.hoverqrcode').toggle();
+  });
+  $('.article-share-qrcode').hover(function(){}, function(){
+      $('.hoverqrcode').hide();
+  });
+});   
+</script>
+
+
+
+
+
+
+
+
+
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.css" media="screen" type="text/css">
+<script src="/fancybox/jquery.fancybox.pack.js"></script>
+<script type="text/javascript">
+$(document).ready(function(){ 
+  $('.article-content').each(function(i){
+    $(this).find('img').each(function(){
+      if ($(this).parent().hasClass('fancybox')) return;
+      var alt = this.alt;
+      if (alt) $(this).after('<span class="caption">' + alt + '</span>');
+      $(this).wrap('<a href="' + this.src + '" title="' + alt + '" class="fancybox"></a>');
+    });
+    $(this).find('.fancybox').each(function(){
+      $(this).attr('rel', 'article' + i);
+    });
+  });
+  if($.fancybox){
+    $('.fancybox').fancybox();
+  }
+}); 
+</script>
+
+
+
+<!-- Analytics Begin -->
+
+
+
+<script>
+var _hmt = _hmt || [];
+(function() {
+  var hm = document.createElement("script");
+  hm.src = "//hm.baidu.com/hm.js?e6d1f421bbc9962127a50488f9ed37d1";
+  var s = document.getElementsByTagName("script")[0]; 
+  s.parentNode.insertBefore(hm, s);
+})();
+</script>
+
+
+
+<!-- Analytics End -->
+
+<!-- Totop Begin -->
+
+	<div id="totop">
+	<a title="返回顶部"><img src="/img/scrollup.png"/></a>
+	</div>
+	<script src="/js/totop.js"></script>
+
+<!-- Totop End -->
+
+<!-- MathJax Begin -->
+<!-- mathjax config similar to math.stackexchange -->
+
+
+<!-- MathJax End -->
+
+<!-- Tiny_search Begin -->
+
+<!-- Tiny_search End -->
+
+  </body>
+</html>
