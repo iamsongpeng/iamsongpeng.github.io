@@ -1,0 +1,951 @@
+<!doctype html>
+
+
+
+  
+
+
+<html class="theme-next pisces use-motion" lang="zh-Hans">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.0" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="编程,Java,Java Web,EL," />
+
+
+
+
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.1.0" />
+
+
+
+
+
+
+<meta name="description" content="1 EL表达式1.1 什么是EL表达式
+jsp中的 EL(express language) 表达式技术：它仅仅是表达式 。
+EL表达式的功能：获取 4 个内置对象（域）中的数据，或自定义对象中的数据，或数组、集合容器中的数据。可以完成非常简单的运行。它不能完成循环、复杂的判断等功能。
+EL表达式的书写格式：${ 表达式 }">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Java-Web-JSP-EL表达式">
+<meta property="og:url" content="https://iamsongpeng.coding.me/iamsongpeng/2016/09/05/JavaWeb/Java-Web-JSP-EL表达式/index.html">
+<meta property="og:site_name" content="荒诞的无聊">
+<meta property="og:description" content="1 EL表达式1.1 什么是EL表达式
+jsp中的 EL(express language) 表达式技术：它仅仅是表达式 。
+EL表达式的功能：获取 4 个内置对象（域）中的数据，或自定义对象中的数据，或数组、集合容器中的数据。可以完成非常简单的运行。它不能完成循环、复杂的判断等功能。
+EL表达式的书写格式：${ 表达式 }">
+<meta property="og:updated_time" content="2017-06-01T23:10:44.847Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Java-Web-JSP-EL表达式">
+<meta name="twitter:description" content="1 EL表达式1.1 什么是EL表达式
+jsp中的 EL(express language) 表达式技术：它仅仅是表达式 。
+EL表达式的功能：获取 4 个内置对象（域）中的数据，或自定义对象中的数据，或数组、集合容器中的数据。可以完成非常简单的运行。它不能完成循环、复杂的判断等功能。
+EL表达式的书写格式：${ 表达式 }">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Pisces',
+    sidebar: {"position":"right","display":"post"},
+    fancybox: true,
+    motion: true,
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="https://iamsongpeng.coding.me/iamsongpeng/2016/09/05/JavaWeb/Java-Web-JSP-EL表达式/"/>
+
+
+
+
+
+  <title> Java-Web-JSP-EL表达式 | 荒诞的无聊 </title>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+
+
+
+  <script type="text/javascript">
+    var _hmt = _hmt || [];
+    (function() {
+      var hm = document.createElement("script");
+      hm.src = "https://hm.baidu.com/hm.js?76d46d8a1af6bc211270ab65b11f26f2";
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(hm, s);
+    })();
+  </script>
+
+
+
+
+
+
+
+
+  
+  
+    
+  
+
+  <div class="container one-collumn sidebar-position-right page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-meta ">
+  
+
+  <div class="custom-logo-site-title">
+    <a href="/"  class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <span class="site-title">荒诞的无聊</span>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+  <p class="site-subtitle">在进步的编程运动员</p>
+</div>
+
+<div class="site-nav-toggle">
+  <button>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+  </button>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/aboutMe" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
+            
+            关于
+          </a>
+        </li>
+      
+
+      
+        <li class="menu-item menu-item-search">
+          
+            <a href="javascript:;" class="popup-trigger">
+          
+            
+              <i class="menu-item-icon fa fa-search fa-fw"></i> <br />
+            
+            搜索
+          </a>
+        </li>
+      
+    </ul>
+  
+
+  
+    <div class="site-search">
+      
+  <div class="popup">
+ <span class="search-icon fa fa-search"></span>
+ <input type="text" id="local-search-input">
+ <div id="local-search-result"></div>
+ <span class="popup-btn-close">close</span>
+</div>
+
+
+    </div>
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+  <link itemprop="mainEntityOfPage" href="https://iamsongpeng.coding.me/iamsongpeng/2016/09/05/JavaWeb/Java-Web-JSP-EL表达式/">
+
+  <span style="display:none" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <meta itemprop="name" content="宋鹏">
+    <meta itemprop="description" content="">
+    <meta itemprop="image" content="http://odhng6tv1.bkt.clouddn.com/%E5%AE%8B%E9%B9%8F%E5%A4%B4%E5%83%8F.jpg">
+  </span>
+
+  <span style="display:none" itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+    <meta itemprop="name" content="荒诞的无聊">
+    <span style="display:none" itemprop="logo" itemscope itemtype="http://schema.org/ImageObject">
+      <img style="display:none;" itemprop="url image" alt="荒诞的无聊" src="">
+    </span>
+  </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                Java-Web-JSP-EL表达式
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2016-09-05T00:00:00+08:00">
+                2016-09-05
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+              <span class="post-meta-divider">|</span>
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Java-Web/" itemprop="url" rel="index">
+                    <span itemprop="name">Java Web</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+
+          
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h2 id="1-EL表达式"><a href="#1-EL表达式" class="headerlink" title="1 EL表达式"></a>1 EL表达式</h2><h3 id="1-1-什么是EL表达式"><a href="#1-1-什么是EL表达式" class="headerlink" title="1.1 什么是EL表达式"></a>1.1 什么是EL表达式</h3><ul>
+<li>jsp中的 EL(express language) 表达式技术：它仅仅是表达式 。</li>
+<li>EL表达式的功能：获取 4 个内置对象（域）中的数据，或自定义对象中的数据，或数组、集合容器中的数据。可以完成非常简单的运行。它不能完成循环、复杂的判断等功能。</li>
+<li>EL表达式的书写格式：<code>${ 表达式 }</code></li>
+</ul>
+<a id="more"></a>
+<h3 id="1-2-EL表达式获取域对象中的数据"><a href="#1-2-EL表达式获取域对象中的数据" class="headerlink" title="1.2 EL表达式获取域对象中的数据"></a>1.2 EL表达式获取域对象中的数据</h3><h4 id="格式1-xxxxScope-key"><a href="#格式1-xxxxScope-key" class="headerlink" title="格式1: ${xxxxScope.key}"></a>格式1: <code>${xxxxScope.key}</code></h4><p>使用 EL 表达式从不同的域中取出数据，需要使用 EL 中的 4 个内置对象搞定: <code>pageScope</code>, <code>requestScope</code>, <code>sessionScope</code>, <code>applicationScope</code></p>
+<p>在 4 个 EL 内置对象 <code>xxxxScope</code> 取出保存的数据时，相当于使用<code>pageContext.getAttribute(key,scope);</code>取值</p>
+<p>提示: </p>
+<ul>
+<li><code>scope 英 [skəʊp]  美 [skop] n. 作用域[计算机]; 范围；余地；视野</code></li>
+<li><code>context 英 [&#39;kɒntekst]  美 [&#39;kɑntɛkst] n. 语境[计算机]; 环境；上下文；来龙去脉</code></li>
+</ul>
+<h4 id="格式2-key"><a href="#格式2-key" class="headerlink" title="格式2: ${key}"></a>格式2: <code>${key}</code></h4><p>如果不知道数据在哪个范围中，这时可以不用指定范围直接书写key值即可 <code>${key}</code></p>
+<p>下面代码的底层对应的是 <code>pageContext.findAttribute(name);</code></p>
+<h4 id="getAttribute-和-findAttribute-区别"><a href="#getAttribute-和-findAttribute-区别" class="headerlink" title="getAttribute() 和 findAttribute() 区别"></a>getAttribute() 和 findAttribute() 区别</h4><ul>
+<li>findAttribute 方法依次在 <code>page</code>, <code>request</code>, <code>session</code>（如果有效的话）和 <code>application Scope</code>（范围）查找以name为名的Attribute，找到就返回对象，都找不到返回null。</li>
+<li>getAttribute 方法在 <code>page scope</code> 内查找与 <code>name</code> 相关的属性，找到返回就返回对象，找不到就返回 <code>null</code>。</li>
+<li>两种的区别是，查找范围不同。</li>
+</ul>
+<h4 id="示例"><a href="#示例" class="headerlink" title="示例:"></a>示例:</h4><ul>
+<li>需求1: 通过 EL 表达式 从指定域中获取数据 (比较和 Java 代码的不同)</li>
+<li>需求2: 通过 EL 表达式 从不确定域中获取数据</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div></pre></td><td class="code"><pre><div class="line">&lt;body&gt;</div><div class="line">	&lt;!-- JSP 有九大内置对象: page(Object), request(HttpServletRequest), session(HttpSession), application(ServletContext), pageContext(PageContext), response(HttpServletResponse), config(ServletConfig), exception(Throwable), out(JspWriter)  --&gt;</div><div class="line">	&lt;!-- 其中四大域对象: page(Object), request(HttpServletRequest), session(HttpSession), application(ServletContext)  --&gt;</div><div class="line">	&lt;%</div><div class="line">		pageContext.setAttribute(&quot;city&quot;, &quot;北京1&quot;);</div><div class="line">		pageContext.setAttribute(&quot;city&quot;, &quot;北京2&quot;, PageContext.REQUEST_SCOPE);</div><div class="line">		pageContext.setAttribute(&quot;city&quot;, &quot;北京3&quot;, PageContext.SESSION_SCOPE);</div><div class="line">		pageContext.setAttribute(&quot;city&quot;, &quot;北京4&quot;, PageContext.APPLICATION_SCOPE);</div><div class="line">        </div><div class="line">        // 如下注释部分记得测试, 看看结果</div><div class="line">		// pageContext.removeAttribute(&quot;city&quot;); </div><div class="line">		// pageContext.removeAttribute(&quot;city&quot;, PageContext.REQUEST_SCOPE);</div><div class="line">		// pageContext.removeAttribute(&quot;city&quot;, PageContext.PAGE_SCOPE);</div><div class="line">	%&gt;</div><div class="line">	</div><div class="line">	&lt;h3&gt;需求1: 通过 EL 表达式 从指定域中获取数据 (比较和 Java 代码的不同)&lt;/h3&gt;</div><div class="line">		&lt;h4&gt;Java 代码获取数据&lt;/h4&gt;</div><div class="line">			page: &lt;%=pageContext.getAttribute(&quot;city&quot;) %&gt; &lt;br/&gt;</div><div class="line">			request: &lt;%=pageContext.getAttribute(&quot;city&quot;, PageContext.REQUEST_SCOPE) %&gt; &lt;br/&gt;</div><div class="line">			session: &lt;%=pageContext.getAttribute(&quot;city&quot;, PageContext.SESSION_SCOPE) %&gt; &lt;br/&gt;</div><div class="line">			application: &lt;%=pageContext.getAttribute(&quot;city&quot;, PageContext.APPLICATION_SCOPE) %&gt; &lt;br/&gt;</div><div class="line">			</div><div class="line">		&lt;h4&gt;EL 表达式获取数据&lt;/h4&gt;</div><div class="line">			page: $&#123;pageScope.city &#125; &lt;br/&gt;</div><div class="line">			request: $&#123;requestScope.city &#125; &lt;br/&gt;</div><div class="line">			session: $&#123;sessionScope.city &#125; &lt;br/&gt;</div><div class="line">			application: $&#123;applicationScope.city &#125; &lt;br/&gt;</div><div class="line">			</div><div class="line">	&lt;h3&gt;需求2: 通过 EL 表达式从不确定域中获取数据&lt;/h3&gt;</div><div class="line">		&lt;h4&gt;Java 代码获取数据&lt;/h4&gt;</div><div class="line">			&lt;%-- &lt;%=pageContext.getAttribute(&quot;city&quot;) %&gt; --%&gt;</div><div class="line">			&lt;%=pageContext.findAttribute(&quot;city&quot;) %&gt;</div><div class="line">		&lt;h4&gt;EL 表达式获取数据&lt;/h4&gt;</div><div class="line">			$&#123;city &#125;</div><div class="line">				</div><div class="line">	&lt;hr/&gt;</div><div class="line">	</div><div class="line">	&lt;h3&gt;提示: getAttribute 与  findAttribute 的区别&lt;/h3&gt;</div><div class="line">		&lt;ul&gt;</div><div class="line">			&lt;li&gt; findAttribute 依次在page，request，session（如果有效的话）和application Scope（范围）查找以name为名的Attribute，找到就返回对象，都找不到返回null。&lt;/li&gt; </div><div class="line">			&lt;li&gt; getAttribute 在page scope内查找与name相关的属性，找到返回就返回对象，找不到就返回null。 &lt;/li&gt;</div><div class="line">			&lt;li&gt;两种的区别是，查找范围不同。&lt;/li&gt;</div><div class="line">		&lt;/ul&gt;	</div><div class="line">&lt;/body&gt;</div></pre></td></tr></table></figure>
+<p><strong>提示</strong>：通过上面的演示，发现 EL 表达式从四个域中取值，就是在代替使用 PageContext 中的 getAttribute 方法取值的麻烦，底层依然在使用 PageContext 中的 getAttribute 方法。</p>
+<p><strong>注意</strong>：使用 pageContext 的 getAttribute 方法或者 findAttribute 方法从 4 个范围中取出数据的时候，如果指定的 key 不存在会得到 <code>null</code>，而使用 EL 表达式取出的时候指定的 key 不存在，<strong>页面上什么都没有</strong>。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">Java代码获取值: &lt;%=pageContext.getAttribute(&quot;address&quot;,PageContext.PAGE_SCOPE) %&gt;</div><div class="line">&lt;hr/&gt;</div><div class="line">EL表达式: $&#123;pageScope.address&#125;</div></pre></td></tr></table></figure>
+<p>页面结果：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">Java 代码获取值: null</div><div class="line">EL 表达式:</div></pre></td></tr></table></figure>
+<h3 id="1-3-EL-表达式获取复杂数据"><a href="#1-3-EL-表达式获取复杂数据" class="headerlink" title="1.3 EL 表达式获取复杂数据"></a>1.3 EL 表达式获取复杂数据</h3><p>这里说的复杂数据是指：数组，集合，自定义对象。</p>
+<h4 id="演示-EL-获取数组中的值"><a href="#演示-EL-获取数组中的值" class="headerlink" title="演示 EL 获取数组中的值"></a>演示 EL 获取数组中的值</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line">&lt;h2&gt;获取域中 数组的值&lt;/h2&gt;</div><div class="line">&lt;!-- 为了演示方便, 直接在 JSP 内使用 Java 代码! --&gt;</div><div class="line">&lt;%</div><div class="line">	int[] arr = &#123;521, 1314, 2046&#125;;</div><div class="line">	// out.println(arr);</div><div class="line">	// 将数组保存到域对象中</div><div class="line">	pageContext.setAttribute(&quot;arr&quot;, arr);</div><div class="line">%&gt;</div><div class="line">数组: $&#123;pageScope.arr &#125; &lt;br/&gt;</div><div class="line">数组: $&#123;arr &#125; &lt;br/&gt;</div><div class="line">元素: $&#123;arr[0] &#125; $&#123;arr[1] &#125; $&#123;arr[2] &#125; &lt;br/&gt;</div></pre></td></tr></table></figure>
+<h4 id="演示EL获取集合中的值"><a href="#演示EL获取集合中的值" class="headerlink" title="演示EL获取集合中的值"></a>演示EL获取集合中的值</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div></pre></td><td class="code"><pre><div class="line">&lt;h2&gt;获取域中 list集合中的值&lt;/h2&gt;</div><div class="line">&lt;%</div><div class="line">	List&lt;String&gt; list = new ArrayList&lt;String&gt;();</div><div class="line">	Collections.addAll(list, &quot;Java&quot;, &quot;JavaScript&quot;, &quot;Python&quot;, &quot;PHP是世界上最好的语言!&quot;);</div><div class="line">	pageContext.setAttribute(&quot;list&quot;, list);</div><div class="line">%&gt;</div><div class="line">集合: $&#123;list &#125; &lt;br/&gt;</div><div class="line">元素: $&#123;list[0] &#125; $&#123;list[1] &#125; $&#123;list[2] &#125; $&#123;list[3] &#125; &lt;br/&gt;</div><div class="line">元素: $&#123;list.get(0) &#125; $&#123;list.get(1) &#125; $&#123;list.get(2) &#125; $&#123;list.get(3) &#125; &lt;br/&gt;</div><div class="line"></div><div class="line">&lt;h2&gt;获取域中 Map 集合中的值&lt;/h2&gt;</div><div class="line">&lt;%</div><div class="line">	Map&lt;String, Integer&gt; map = new HashMap&lt;String, Integer&gt;();</div><div class="line">	map.put(&quot;Java&quot;, 1);</div><div class="line">	map.put(&quot;JavaScript&quot;, 2);</div><div class="line">	map.put(&quot;Python&quot;, 3);</div><div class="line">	pageContext.setAttribute(&quot;map&quot;, map);</div><div class="line">%&gt;</div><div class="line">集合: $&#123;map &#125; &lt;br/&gt;</div><div class="line">元素: Java=$&#123;map[&quot;Java&quot;] &#125; JavaScript=$&#123;map[&quot;JavaScript&quot;] &#125; Python=$&#123;map[&quot;Python&quot;] &#125; &lt;br/&gt;</div><div class="line">元素: Java=$&#123;map.Java &#125; JavaScript=$&#123;map.JavaScript &#125; Java=$&#123;map.Python &#125; &lt;br/&gt;</div></pre></td></tr></table></figure>
+<h4 id="演示EL获取自定义对象属性值"><a href="#演示EL获取自定义对象属性值" class="headerlink" title="演示EL获取自定义对象属性值"></a>演示EL获取自定义对象属性值</h4><p>首先需要在项目中创建一个自定义的对象，这里创建 User 对象。并且针对 User 对象中的属性提供相应的 get 和 set 方法。</p>
+<p><strong>注意</strong>：在使用 EL 表达式取出数组、集合、自定义对象中的数据的时候，能够使用 <code>.</code> 的地方都可以使用中括号。特别是在 Map 集合或者自定义对象中 key 值或自定义对的属性名中包含多个字符的时候必须使用中括号搞定。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div></pre></td><td class="code"><pre><div class="line">package com.songpeng.domain;</div><div class="line"></div><div class="line">public class User &#123;</div><div class="line">	private int id;</div><div class="line">	private String username;</div><div class="line">	private String nickname;</div><div class="line"></div><div class="line">	public int getId() &#123;</div><div class="line">		return id;</div><div class="line">	&#125;</div><div class="line"></div><div class="line">	public void setId(int id) &#123;</div><div class="line">		this.id = id;</div><div class="line">	&#125;</div><div class="line"></div><div class="line">	public String getUsername() &#123;</div><div class="line">		return username;</div><div class="line">	&#125;</div><div class="line"></div><div class="line">	public void setUsername(String username) &#123;</div><div class="line">		this.username = username;</div><div class="line">	&#125;</div><div class="line"></div><div class="line">	public String getNickname() &#123;</div><div class="line">		return nickname;</div><div class="line">	&#125;</div><div class="line"></div><div class="line">	public void setNickname(String nickname) &#123;</div><div class="line">		this.nickname = nickname;</div><div class="line">	&#125;</div><div class="line"></div><div class="line">	public String getAddress() &#123;</div><div class="line">		return &quot;辽宁省辽阳市通明山 薛仁贵(收)&quot;;</div><div class="line">	&#125;</div><div class="line"></div><div class="line">	@Override</div><div class="line">	public String toString() &#123;</div><div class="line">		return &quot;User [id=&quot; + id + &quot;, username=&quot; + username + &quot;, nickname=&quot; + nickname + &quot;]&quot;;</div><div class="line">	&#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div></pre></td><td class="code"><pre><div class="line">&lt;%@ page language=&quot;java&quot; contentType=&quot;text/html; charset=UTF-8&quot;</div><div class="line">    pageEncoding=&quot;UTF-8&quot;%&gt;</div><div class="line">&lt;!DOCTYPE html PUBLIC &quot;-//W3C//DTD HTML 4.01 Transitional//EN&quot; &quot;http://www.w3.org/TR/html4/loose.dtd&quot;&gt;</div><div class="line">&lt;html&gt;</div><div class="line">&lt;head&gt;</div><div class="line">&lt;meta http-equiv=&quot;Content-Type&quot; content=&quot;text/html; charset=UTF-8&quot;&gt;</div><div class="line">&lt;title&gt;Insert title here&lt;/title&gt;</div><div class="line">&lt;/head&gt;</div><div class="line">&lt;body&gt;</div><div class="line">	&lt;h2&gt;获取 域中自定义对象中的数据&lt;/h2&gt;</div><div class="line">	&lt;jsp:useBean id=&quot;user&quot; class=&quot;com.songpeng.domain.User&quot; scope=&quot;page&quot;&gt;&lt;/jsp:useBean&gt;</div><div class="line">	&lt;jsp:setProperty property=&quot;id&quot; name=&quot;user&quot; value=&quot;3&quot;/&gt;</div><div class="line">	&lt;jsp:setProperty property=&quot;username&quot; name=&quot;user&quot; value=&quot;薛仁贵&quot;/&gt;</div><div class="line">	&lt;jsp:setProperty property=&quot;nickname&quot; name=&quot;user&quot; value=&quot;仁贵&quot;/&gt;</div><div class="line">	</div><div class="line">	自定义对象: $&#123;user &#125; &lt;br/&gt;</div><div class="line">	属性: $&#123;user.id &#125;  $&#123;user.username &#125; $&#123;user.nickname &#125; &lt;br/&gt;</div><div class="line">	地址: $&#123;user.address &#125; &lt;br/&gt;</div><div class="line">&lt;/body&gt;</div><div class="line">&lt;/html&gt;</div></pre></td></tr></table></figure>
+<p><strong>注意</strong>：在 EL 表达式中，获取对象的属性的值的时候，其实不是在看这个对象所在的类是否有这个属性，只要这个对象所在的类中有 getXxxxx 方法，就可以使用 EL 表达式获取 Xxx 值。</p>
+<h4 id="演示-EL-获取-Map-值"><a href="#演示-EL-获取-Map-值" class="headerlink" title="演示 EL 获取 Map 值"></a>演示 EL 获取 Map 值</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div></pre></td><td class="code"><pre><div class="line">&lt;h2&gt;演示 EL 获取 Map 值&lt;/h2&gt;</div><div class="line">&lt;%</div><div class="line">	Map&lt;String, Integer&gt; map2 = new HashMap&lt;String, Integer&gt;();</div><div class="line">	map2.put(&quot;www.iamsongpeng.com&quot;, 1990);</div><div class="line">	map2.put(&quot;songpeng&quot;, 95);</div><div class="line">	map2.put(&quot;dapeng&quot;, 2);</div><div class="line">	pageContext.setAttribute(&quot;map2&quot;, map2);</div><div class="line">%&gt;</div><div class="line"></div><div class="line">集合: $&#123;map2 &#125; &lt;br/&gt;</div><div class="line">元素: www.iamsongpeng.com=$&#123;map2[&quot;www.iamsongpeng.com&quot;] &#125; &lt;br/&gt;</div><div class="line">元素: www.iamsongpeng.com=$&#123;map2[&apos;www.iamsongpeng.com&apos;] &#125; &lt;br/&gt;</div><div class="line">元素: songpeng=$&#123;map2.songpeng &#125; &lt;br/&gt;</div><div class="line">元素: dapeng=$&#123;map2.dapeng &#125; &lt;br/&gt;</div></pre></td></tr></table></figure>
+<h3 id="1-4-EL-表达式执行运算"><a href="#1-4-EL-表达式执行运算" class="headerlink" title="1.4 EL 表达式执行运算"></a>1.4 EL 表达式执行运算</h3><ol>
+<li>使用 EL 进行简单的运算的时候，如果指定的范围中的 key 不存在，这时就不会去使用这个值计算，但是存在的依然会进行运算</li>
+</ol>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">&lt;h2&gt;需求1: 将 a 和 b 保存到 page 域中, 使用 EL 表达式计算 a+b&lt;/h2&gt;</div><div class="line">&lt;h2&gt;需求2: 将 a 和 b 保存到 page 域中, 使用 EL 计算&lt;/h2&gt;</div></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div></pre></td><td class="code"><pre><div class="line">&lt;%@ page language=&quot;java&quot; contentType=&quot;text/html; charset=UTF-8&quot;</div><div class="line">    pageEncoding=&quot;UTF-8&quot;%&gt;</div><div class="line">&lt;!DOCTYPE html PUBLIC &quot;-//W3C//DTD HTML 4.01 Transitional//EN&quot; &quot;http://www.w3.org/TR/html4/loose.dtd&quot;&gt;</div><div class="line">&lt;html&gt;</div><div class="line">&lt;head&gt;</div><div class="line">&lt;meta http-equiv=&quot;Content-Type&quot; content=&quot;text/html; charset=UTF-8&quot;&gt;</div><div class="line">&lt;title&gt;Insert title here&lt;/title&gt;</div><div class="line">&lt;/head&gt;</div><div class="line">&lt;body&gt;</div><div class="line">	&lt;h2&gt;需求1: 将 a 和 b 保存到 page 域中, 使用 EL 表达式计算 a+b&lt;/h2&gt;</div><div class="line">	&lt;%</div><div class="line">		pageContext.setAttribute(&quot;a&quot;, 1);</div><div class="line">		pageContext.setAttribute(&quot;b&quot;, 1);</div><div class="line">	%&gt;</div><div class="line">	a + b = $&#123;a + b &#125; &lt;br/&gt;</div><div class="line">	</div><div class="line">	&lt;h2&gt;需求2: 将 a 和 b 保存到 page 域中, 使用 EL 计算&lt;/h2&gt;</div><div class="line">	a + b + c = $&#123;a + b + c &#125; &lt;br/&gt;</div><div class="line">	注: 上述 c 未定义! &lt;br/&gt;</div><div class="line">&lt;/body&gt;</div><div class="line">&lt;/html&gt;</div></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">a + b = 2</div><div class="line">a + b + c = 2</div></pre></td></tr></table></figure>
+<ol>
+<li>可以使用 <code>empty</code> 验证某个容器或者变量是否为 <code>null</code></li>
+</ol>
+<p><code>格式: ${ empty  集合或变量等}</code></p>
+<p>如果集合元素的个数为 <code>0</code> 或者 变量为 <code>null</code> 则返回 <code>true</code>, 否则返回 <code>false</code></p>
+<p>常用方式: EL 中三元运算符</p>
+<ul>
+<li><code>${empty 对象 ? 表达式1 : 表达式2 }</code></li>
+<li><code>${not empty 对象 ? 表达式1 : 表达式2 }</code></li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">&lt;h2&gt;需求1: 使用 EL 表达式 判断集合是否为空&lt;/h2&gt;</div><div class="line">&lt;h2&gt;需求2: 使用 EL 表达式 判断用户是否存在&lt;/h2&gt;</div></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div></pre></td><td class="code"><pre><div class="line">&lt;%@page import=&quot;com.songpeng.domain.User&quot;%&gt;</div><div class="line">&lt;%@page import=&quot;java.util.ArrayList&quot;%&gt;</div><div class="line">&lt;%@page import=&quot;java.util.List&quot;%&gt;</div><div class="line">&lt;%@ page language=&quot;java&quot; contentType=&quot;text/html; charset=UTF-8&quot;</div><div class="line">    pageEncoding=&quot;UTF-8&quot;%&gt;</div><div class="line">&lt;!DOCTYPE html PUBLIC &quot;-//W3C//DTD HTML 4.01 Transitional//EN&quot; &quot;http://www.w3.org/TR/html4/loose.dtd&quot;&gt;</div><div class="line">&lt;html&gt;</div><div class="line">&lt;head&gt;</div><div class="line">&lt;meta http-equiv=&quot;Content-Type&quot; content=&quot;text/html; charset=UTF-8&quot;&gt;</div><div class="line">&lt;title&gt;Insert title here&lt;/title&gt;</div><div class="line">&lt;/head&gt;</div><div class="line">&lt;body&gt;</div><div class="line">	&lt;h2&gt;需求1: 使用 EL 表达式 判断集合是否为空&lt;/h2&gt;</div><div class="line">	&lt;%</div><div class="line">		List&lt;String&gt; list = new ArrayList&lt;String&gt;();</div><div class="line">		list.add(&quot;songpeng&quot;);</div><div class="line">		pageContext.setAttribute(&quot;list&quot;, list);</div><div class="line">	%&gt;</div><div class="line">	empty list : $&#123;empty list &#125; &lt;br/&gt;</div><div class="line">	not empty list : $&#123;not empty list &#125; &lt;br/&gt;</div><div class="line">	</div><div class="line">	&lt;h2&gt;需求2: 使用 EL 表达式 判断用户是否存在&lt;/h2&gt;</div><div class="line">	&lt;%</div><div class="line">		User user = new User();</div><div class="line">		user.setId(1);</div><div class="line">		user.setUsername(&quot;柳岩&quot;);</div><div class="line">		user.setNickname(&quot;大胸姐&quot;);</div><div class="line">		</div><div class="line">		// 存储数据到 域对象</div><div class="line">		pageContext.setAttribute(&quot;user&quot;, user, PageContext.SESSION_SCOPE);</div><div class="line">		// 删除数据</div><div class="line">		// pageContext.removeAttribute(&quot;user&quot;, PageContext.SESSION_SCOPE);</div><div class="line">	%&gt;</div><div class="line">	$&#123;empty user ? &quot;匿名登录&quot; : user.nickname &#125; &lt;br/&gt;</div><div class="line">	$&#123;not empty user ? user.nickname : &quot;匿名登录&quot; &#125; &lt;br/&gt;</div><div class="line">&lt;/body&gt;</div><div class="line">&lt;/html&gt;</div></pre></td></tr></table></figure>
+<h2 id="2-EL-的内置对象-11个"><a href="#2-EL-的内置对象-11个" class="headerlink" title="2 EL 的内置对象(11个)"></a>2 EL 的内置对象(11个)</h2><p>EL 表达式也有自己的内置对象可以直接在 EL 表达式中使用：</p>
+<h3 id="2-1-从不同的域中取值的四个内置对象："><a href="#2-1-从不同的域中取值的四个内置对象：" class="headerlink" title="2.1 从不同的域中取值的四个内置对象："></a>2.1 从不同的域中取值的四个内置对象：</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">格式: $&#123;XXXScope.key&#125;</div><div class="line"></div><div class="line">pageScope</div><div class="line">requestScope</div><div class="line">sessionScope</div><div class="line">applicationScope</div></pre></td></tr></table></figure>
+<p>准备工作:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">&lt;%</div><div class="line">  pageContext.setAttribute(&quot;address&quot;, &quot;北京1&quot;); // page</div><div class="line">  pageContext.setAttribute(&quot;address&quot;, &quot;北京2&quot;, PageContext.REQUEST_SCOPE); // request</div><div class="line">  pageContext.setAttribute(&quot;address&quot;, &quot;北京3&quot;, PageContext.SESSION_SCOPE); // session</div><div class="line">  pageContext.setAttribute(&quot;address&quot;, &quot;北京4&quot;, PageContext.APPLICATION_SCOPE); // application(ServletContext)</div><div class="line">%&gt;</div></pre></td></tr></table></figure>
+<p>同上 ++1.2 EL表达式获取域对象中的数据++</p>
+<h3 id="2-2-专门获取浏览器请求服务器时携带参数的-2-内置对象："><a href="#2-2-专门获取浏览器请求服务器时携带参数的-2-内置对象：" class="headerlink" title="2.2 专门获取浏览器请求服务器时携带参数的 2 内置对象："></a>2.2 专门获取浏览器请求服务器时携带参数的 2 内置对象：</h3><p>param  获取用户提交的某个数据  可以理解成:  request.getParameter(name)<br>    paramValues 获取某个key对应的多个value值    可以理解成: request.getParameterValues(name)</p>
+<p>准备数据 WebContent/ELDemo/06-form.jsp:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div></pre></td><td class="code"><pre><div class="line">&lt;body&gt;</div><div class="line">	&lt;form action=&quot;/day18_my/08.jsp&quot; method=&quot;post&quot;&gt;</div><div class="line">	&lt;table&gt;</div><div class="line">		&lt;tr&gt;</div><div class="line">			&lt;td&gt;姓名: &lt;/td&gt;</div><div class="line">			&lt;td&gt;&lt;input type=&quot;text&quot; name=&quot;username&quot;/&gt;&lt;/td&gt;</div><div class="line">		&lt;/tr&gt;</div><div class="line">		&lt;tr&gt;</div><div class="line">			&lt;td&gt;爱好: &lt;/td&gt;</div><div class="line">			&lt;td&gt;</div><div class="line">				&lt;input type=&quot;checkbox&quot; name=&quot;hobby&quot; value=&quot;running&quot; /&gt; 跑步</div><div class="line">				&lt;input type=&quot;checkbox&quot; name=&quot;hobby&quot; value=&quot;bungee &quot; /&gt; 蹦极</div><div class="line">				&lt;input type=&quot;checkbox&quot; name=&quot;hobby&quot; value=&quot;golf&quot; /&gt; 高尔夫</div><div class="line">			&lt;/td&gt;</div><div class="line">		&lt;/tr&gt;</div><div class="line">		&lt;tr&gt;</div><div class="line">			&lt;td&gt;&lt;/td&gt;</div><div class="line">			&lt;td&gt;&lt;input type=&quot;submit&quot; value=&quot;提交&quot;/&gt;&lt;/td&gt;</div><div class="line">		&lt;/tr&gt;</div><div class="line">	&lt;/table&gt;</div><div class="line">	&lt;/form&gt;</div><div class="line">&lt;/body&gt;</div></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">&lt;body&gt;</div><div class="line">	requestScope域对象是否为空: $&#123;empty requestScope &#125; &lt;br/&gt;</div><div class="line">	姓名: &lt;%=request.getParameter(&quot;username&quot;) %&gt; &lt;br/&gt;</div><div class="line">	姓名: $&#123;param.username &#125; &lt;br/&gt;</div><div class="line">	爱好: $&#123;paramValues.hobby[0] &#125; $&#123;paramValues.hobby[1] &#125; $&#123;paramValues.hobby[2] &#125; &lt;br/&gt;</div><div class="line">&lt;/body&gt;</div></pre></td></tr></table></figure>
+<h3 id="2-3-专门获取浏览器请求服务器时请求头中数据的-2-个内置对象："><a href="#2-3-专门获取浏览器请求服务器时请求头中数据的-2-个内置对象：" class="headerlink" title="2.3 专门获取浏览器请求服务器时请求头中数据的 2 个内置对象："></a>2.3 专门获取浏览器请求服务器时请求头中数据的 2 个内置对象：</h3><ul>
+<li><code>header</code> 获取请求头中的信息</li>
+<li><code>headerValues</code> 某个请求头中的多个<code>value</code>值</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div></pre></td><td class="code"><pre><div class="line">&lt;%@ page language=&quot;java&quot; contentType=&quot;text/html; charset=UTF-8&quot;</div><div class="line">    pageEncoding=&quot;UTF-8&quot;%&gt;</div><div class="line">&lt;!DOCTYPE html PUBLIC &quot;-//W3C//DTD HTML 4.01 Transitional//EN&quot; &quot;http://www.w3.org/TR/html4/loose.dtd&quot;&gt;</div><div class="line">&lt;html&gt;</div><div class="line">&lt;head&gt;</div><div class="line">&lt;meta http-equiv=&quot;Content-Type&quot; content=&quot;text/html; charset=UTF-8&quot;&gt;</div><div class="line">&lt;title&gt;Insert title here&lt;/title&gt;</div><div class="line">&lt;/head&gt;</div><div class="line">&lt;body&gt;</div><div class="line">	&lt;h3&gt;Java 代码&lt;/h3&gt;</div><div class="line">		user-agent: &lt;%=request.getHeader(&quot;user-agent&quot;) %&gt; &lt;/br&gt;</div><div class="line">		cookie: &lt;%=request.getHeader(&quot;cookie&quot;) %&gt; &lt;/br&gt;</div><div class="line">	&lt;h3&gt;EL 表达式&lt;/h3&gt;</div><div class="line">		user-agent: $&#123;header[&quot;user-agent&quot;] &#125; &lt;br/&gt;</div><div class="line">		cookie: $&#123;header.cookie &#125; &lt;br/&gt;</div><div class="line">&lt;/body&gt;</div><div class="line">&lt;/html&gt;</div></pre></td></tr></table></figure>
+<h3 id="2-4-cookie它获取到的一个cookie数组"><a href="#2-4-cookie它获取到的一个cookie数组" class="headerlink" title="2.4 cookie它获取到的一个cookie数组"></a>2.4 cookie它获取到的一个cookie数组</h3><ul>
+<li>获取<code>cookie</code>对象: <code>${cookie.cookie的名称}</code>, 如  <code>${cookie.username}</code></li>
+<li>获取<code>cookie</code>对象的名称: <code>${cookie.cookie的名称.name}</code> 如: <code>${cookie.username.name}</code></li>
+<li>获取<code>cookie</code>对象的值  : <code>${cookie.cookie的名称.value}</code> 如: <code>${cookie.username.value}</code></li>
+</ul>
+<p>需求: 在JSP页面向浏览器发送cookie, 在访问时获取cookie中的数据</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div></pre></td><td class="code"><pre><div class="line">&lt;%@page import=&quot;java.util.Date&quot;%&gt;</div><div class="line">&lt;%@ page language=&quot;java&quot; contentType=&quot;text/html; charset=UTF-8&quot;</div><div class="line">	pageEncoding=&quot;UTF-8&quot;%&gt;</div><div class="line">&lt;!DOCTYPE html PUBLIC &quot;-//W3C//DTD HTML 4.01 Transitional//EN&quot; &quot;http://www.w3.org/TR/html4/loose.dtd&quot;&gt;</div><div class="line">&lt;html&gt;</div><div class="line">&lt;head&gt;</div><div class="line">&lt;meta http-equiv=&quot;Content-Type&quot; content=&quot;text/html; charset=UTF-8&quot;&gt;</div><div class="line">&lt;title&gt;Insert title here&lt;/title&gt;</div><div class="line">&lt;/head&gt;</div><div class="line">&lt;body&gt;</div><div class="line">	&lt;h2&gt;需求: 在 JSP 页面向浏览器发送 cookie, 在访问时获取 cookie 中的数据&lt;/h2&gt;</div><div class="line">	&lt;h3&gt;通过 Java 获取 cookie 中的数据&lt;/h3&gt;</div><div class="line">	&lt;%</div><div class="line">		String lastVisitTime = null;</div><div class="line"></div><div class="line">		Cookie[] cookies = request.getCookies();</div><div class="line">		if (cookies != null) &#123;</div><div class="line">			for (Cookie c : cookies) &#123;</div><div class="line">				if (&quot;lastVisitTime&quot;.equals(c.getName())) &#123;</div><div class="line">					lastVisitTime = c.getValue();</div><div class="line">				&#125;</div><div class="line">			&#125;</div><div class="line">		&#125;</div><div class="line"></div><div class="line">		out.println(&quot;上次访问时间: &quot; + lastVisitTime);</div><div class="line">	%&gt;</div><div class="line">	&lt;h3&gt;通过EL获取cookie中的数据&lt;/h3&gt;</div><div class="line">		cookie: $&#123;cookie.lastVisitTime &#125; &lt;br/&gt;</div><div class="line">		cookie.name: $&#123;cookie.lastVisitTime.name &#125; &lt;br/&gt;</div><div class="line">		cookie.value: $&#123;cookie.lastVisitTime.value &#125;</div><div class="line">		</div><div class="line">	&lt;!-- 创建cookie 保存上次访问时间 发送cookie --&gt;</div><div class="line">	&lt;%</div><div class="line">		Cookie cookie = new Cookie(&quot;lastVisitTime&quot;, new Date().toLocaleString());</div><div class="line">		cookie.setMaxAge(60 * 60 * 24 * 7 * 2);</div><div class="line">		cookie.setPath(&quot;/&quot;);</div><div class="line">		response.addCookie(cookie);</div><div class="line">	%&gt;</div><div class="line">&lt;/body&gt;</div><div class="line">&lt;/html&gt;</div></pre></td></tr></table></figure>
+<p>注意: 再次访问登录页面, 用户名回显</p>
+<h3 id="2-5-其他对象"><a href="#2-5-其他对象" class="headerlink" title="2.5 其他对象"></a>2.5 其他对象</h3><p><strong>pageContext  和 JSP 内置对象 pageContext 功能一致</strong></p>
+<p><code>initParam</code> 获取的项目的全局配置参数，类似于 <code>ServletContext</code> 中的 <code>getInitParameter(String name)</code> 方法功能（它只能获取到 <code>web.xml</code> 配置的全局参数，每个 <code>servlet</code> 单独配置的无法使用 <code>initParam</code> 获取）。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div></pre></td><td class="code"><pre><div class="line">&lt;%@page import=&quot;java.util.Date&quot;%&gt;</div><div class="line">&lt;%@ page language=&quot;java&quot; contentType=&quot;text/html; charset=UTF-8&quot;</div><div class="line">	pageEncoding=&quot;UTF-8&quot;%&gt;</div><div class="line">&lt;!DOCTYPE html PUBLIC &quot;-//W3C//DTD HTML 4.01 Transitional//EN&quot; &quot;http://www.w3.org/TR/html4/loose.dtd&quot;&gt;</div><div class="line">&lt;html&gt;</div><div class="line">&lt;head&gt;</div><div class="line">&lt;meta http-equiv=&quot;Content-Type&quot; content=&quot;text/html; charset=UTF-8&quot;&gt;</div><div class="line">&lt;title&gt;Insert title here&lt;/title&gt;</div><div class="line">&lt;/head&gt;</div><div class="line">&lt;body&gt;</div><div class="line">	&lt;h2&gt;获取项目的路径&lt;/h2&gt;</div><div class="line">	&lt;h3&gt;Java&lt;/h3&gt;</div><div class="line">		方式一: request.getContextPath=&lt;%=request.getContextPath() %&gt; &lt;br/&gt;</div><div class="line">		方式二: context.getContextpath=&lt;%=application.getContextPath() %&gt; &lt;br/&gt;</div><div class="line">		方式三: config.context.getContextpath=&lt;%=config.getServletContext().getContextPath() %&gt; &lt;br/&gt;</div><div class="line">		方式四: pageContext.request.getContextPath=</div><div class="line">		&lt;%</div><div class="line">			HttpServletRequest req = (HttpServletRequest)pageContext.getRequest();</div><div class="line">			out.println(req.getContextPath());</div><div class="line">		%&gt;</div><div class="line">	&lt;h3&gt;EL&lt;/h3&gt;</div><div class="line">		方式一: pageContext.request.contextPath=$&#123;pageContext.request.contextPath &#125; &lt;br/&gt;</div><div class="line">		方式二: pageContext.servletContext.contextPath=$&#123;pageContext.servletContext.contextPath &#125; </div><div class="line">&lt;/body&gt;</div><div class="line">&lt;/html&gt;</div></pre></td></tr></table></figure>
+<h3 id="2-6-jsp的内置对象和EL的内置对象区分"><a href="#2-6-jsp的内置对象和EL的内置对象区分" class="headerlink" title="2.6 jsp的内置对象和EL的内置对象区分"></a>2.6 jsp的内置对象和EL的内置对象区分</h3><ul>
+<li>JSP 页面中的Java代码中可以直接使用的对象称为JSP的内置对象。<code>&lt;%  可以直接使用的对象 %&gt;</code></li>
+<li>EL表达式中11个内置对象，在EL表达式中也可以直接去使用这些对象<code>${ EL的内置对象.key值或者其他的信息 }</code></li>
+</ul>
+<p><a href="https://github.com/iamsongpeng/java-web-demo/tree/master/WebContent/ELDemo" target="_blank" rel="external">Github上有完整示例代码</a></p>
+
+      
+    </div>
+
+    <div>
+      
+        
+<div id="wechat_subscriber" style="display: block; padding: 10px 0; margin: 20px auto; width: 100%; text-align: center">
+    <img id="wechat_subscriber_qcode" src="/uploads/wechat-qcode.jpg" alt="宋鹏 wechat" style="width: 200px; max-width: 100%;"/>
+    <div>微信号</div>
+</div>
+
+
+      
+    </div>
+
+    <div>
+      
+        
+  <div style="padding: 10px 0; margin: 20px auto; width: 90%; text-align: center;">
+    <div>坚持原创技术分享，您的支持将鼓励我继续创作！</div>
+    <button id="rewardButton" disable="enable" onclick="var qr = document.getElementById('QR'); if (qr.style.display === 'none') {qr.style.display='block';} else {qr.style.display='none'}">
+      <span>赏</span>
+    </button>
+    <div id="QR" style="display: none;">
+      
+        <div id="wechat" style="display: inline-block">
+          <img id="wechat_qr" src="/uploads/wechatpay.png" alt="宋鹏 WeChat Pay"/>
+          <p>微信打赏</p>
+        </div>
+      
+      
+        <div id="alipay" style="display: inline-block">
+          <img id="alipay_qr" src="/uploads/alipay.jpg" alt="宋鹏 Alipay"/>
+          <p>支付宝打赏</p>
+        </div>
+      
+    </div>
+  </div>
+
+
+      
+    </div>
+
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/编程/" rel="tag"># 编程</a>
+          
+            <a href="/tags/Java/" rel="tag"># Java</a>
+          
+            <a href="/tags/Java-Web/" rel="tag"># Java Web</a>
+          
+            <a href="/tags/EL/" rel="tag"># EL</a>
+          
+        </div>
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2016/09/05/JavaWeb/Java-Web-JSP-taglib指令/" rel="next" title="Java-Web-JSP-taglib指令">
+                <i class="fa fa-chevron-left"></i> Java-Web-JSP-taglib指令
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2020/09/05/方法论-元学习践行三部曲之编程/" rel="prev" title="方法论-元学习践行三部曲之编程-笔记">
+                方法论-元学习践行三部曲之编程-笔记 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="http://odhng6tv1.bkt.clouddn.com/%E5%AE%8B%E9%B9%8F%E5%A4%B4%E5%83%8F.jpg"
+               alt="宋鹏" />
+          <p class="site-author-name" itemprop="name">宋鹏</p>
+          <p class="site-description motion-element" itemprop="description">做就牛！</p>
+        </div>
+        <nav class="site-state motion-element">
+          <div class="site-state-item site-state-posts">
+            <a href="/archives">
+              <span class="site-state-item-count">5</span>
+              <span class="site-state-item-name">日志</span>
+            </a>
+          </div>
+
+          
+            <div class="site-state-item site-state-categories">
+              <a href="/categories">
+                <span class="site-state-item-count">3</span>
+                <span class="site-state-item-name">分类</span>
+              </a>
+            </div>
+          
+
+          
+            <div class="site-state-item site-state-tags">
+              <a href="/tags">
+                <span class="site-state-item-count">9</span>
+                <span class="site-state-item-name">标签</span>
+              </a>
+            </div>
+          
+
+        </nav>
+
+        
+
+        <div class="links-of-author motion-element">
+          
+        </div>
+
+        
+        
+
+        
+        
+
+        
+
+
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#1-EL表达式"><span class="nav-number">1.</span> <span class="nav-text">1 EL表达式</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-1-什么是EL表达式"><span class="nav-number">1.1.</span> <span class="nav-text">1.1 什么是EL表达式</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#1-2-EL表达式获取域对象中的数据"><span class="nav-number">1.2.</span> <span class="nav-text">1.2 EL表达式获取域对象中的数据</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#格式1-xxxxScope-key"><span class="nav-number">1.2.1.</span> <span class="nav-text">格式1: ${xxxxScope.key}</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#格式2-key"><span class="nav-number">1.2.2.</span> <span class="nav-text">格式2: ${key}</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#getAttribute-和-findAttribute-区别"><span class="nav-number">1.2.3.</span> <span class="nav-text">getAttribute() 和 findAttribute() 区别</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#示例"><span class="nav-number">1.2.4.</span> <span class="nav-text">示例:</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#1-3-EL-表达式获取复杂数据"><span class="nav-number">1.3.</span> <span class="nav-text">1.3 EL 表达式获取复杂数据</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#演示-EL-获取数组中的值"><span class="nav-number">1.3.1.</span> <span class="nav-text">演示 EL 获取数组中的值</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#演示EL获取集合中的值"><span class="nav-number">1.3.2.</span> <span class="nav-text">演示EL获取集合中的值</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#演示EL获取自定义对象属性值"><span class="nav-number">1.3.3.</span> <span class="nav-text">演示EL获取自定义对象属性值</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#演示-EL-获取-Map-值"><span class="nav-number">1.3.4.</span> <span class="nav-text">演示 EL 获取 Map 值</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#1-4-EL-表达式执行运算"><span class="nav-number">1.4.</span> <span class="nav-text">1.4 EL 表达式执行运算</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-EL-的内置对象-11个"><span class="nav-number">2.</span> <span class="nav-text">2 EL 的内置对象(11个)</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#2-1-从不同的域中取值的四个内置对象："><span class="nav-number">2.1.</span> <span class="nav-text">2.1 从不同的域中取值的四个内置对象：</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-2-专门获取浏览器请求服务器时携带参数的-2-内置对象："><span class="nav-number">2.2.</span> <span class="nav-text">2.2 专门获取浏览器请求服务器时携带参数的 2 内置对象：</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-3-专门获取浏览器请求服务器时请求头中数据的-2-个内置对象："><span class="nav-number">2.3.</span> <span class="nav-text">2.3 专门获取浏览器请求服务器时请求头中数据的 2 个内置对象：</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-4-cookie它获取到的一个cookie数组"><span class="nav-number">2.4.</span> <span class="nav-text">2.4 cookie它获取到的一个cookie数组</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-5-其他对象"><span class="nav-number">2.5.</span> <span class="nav-text">2.5 其他对象</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-6-jsp的内置对象和EL的内置对象区分"><span class="nav-number">2.6.</span> <span class="nav-text">2.6 jsp的内置对象和EL的内置对象区分</span></a></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy;  2016 - 
+  <span itemprop="copyrightYear">2017</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">宋鹏</span>
+</div>
+
+
+<div class="powered-by">
+  由 <a class="theme-link" href="https://hexo.io">Hexo</a> 强力驱动
+</div>
+
+<div class="theme-info">
+  主题 -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT.Pisces
+  </a>
+</div>
+
+
+        
+
+        
+      </div>
+    </footer>
+
+    <div class="back-to-top">
+      <i class="fa fa-arrow-up"></i>
+    </div>
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+  
+  <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.0"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.0"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.0"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.0"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.0"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.0"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.0"></script>
+
+
+
+  
+
+
+
+  
+
+
+
+
+	
+
+
+
+
+  
+  
+  <script type="text/javascript">
+    // Popup Window;
+    var isfetched = false;
+    // Search DB path;
+    var search_path = "search.xml";
+    if (search_path.length == 0) {
+      search_path = "search.xml";
+    }
+    var path = "/" + search_path;
+    // monitor main search box;
+
+    function proceedsearch() {
+      $("body").append('<div class="popoverlay">').css('overflow', 'hidden');
+      $('.popup').toggle();
+    }
+    // search function;
+    var searchFunc = function(path, search_id, content_id) {
+      'use strict';
+      $.ajax({
+        url: path,
+        dataType: "xml",
+        async: true,
+        success: function( xmlResponse ) {
+          // get the contents from search data
+          isfetched = true;
+          $('.popup').detach().appendTo('.header-inner');
+          var datas = $( "entry", xmlResponse ).map(function() {
+            return {
+              title: $( "title", this ).text(),
+              content: $("content",this).text(),
+              url: $( "url" , this).text()
+            };
+          }).get();
+          var $input = document.getElementById(search_id);
+          var $resultContent = document.getElementById(content_id);
+          $input.addEventListener('input', function(){
+            var matchcounts = 0;
+            var str='<ul class=\"search-result-list\">';
+            var keywords = this.value.trim().toLowerCase().split(/[\s\-]+/);
+            $resultContent.innerHTML = "";
+            if (this.value.trim().length > 1) {
+              // perform local searching
+              datas.forEach(function(data) {
+                var isMatch = false;
+                var content_index = [];
+                var data_title = data.title.trim().toLowerCase();
+                var data_content = data.content.trim().replace(/<[^>]+>/g,"").toLowerCase();
+                var data_url = decodeURIComponent(data.url);
+                var index_title = -1;
+                var index_content = -1;
+                var first_occur = -1;
+                // only match artiles with not empty titles and contents
+                if(data_title != '') {
+                  keywords.forEach(function(keyword, i) {
+                    index_title = data_title.indexOf(keyword);
+                    index_content = data_content.indexOf(keyword);
+                    if( index_title >= 0 || index_content >= 0 ){
+                      isMatch = true;
+                      if (i == 0) {
+                        first_occur = index_content;
+                      }
+                    }
+
+                  });
+                }
+                // show search results
+                if (isMatch) {
+                  matchcounts += 1;
+                  str += "<li><a href='"+ data_url +"' class='search-result-title'>"+ data_title +"</a>";
+                  var content = data.content.trim().replace(/<[^>]+>/g,"");
+                  if (first_occur >= 0) {
+                    // cut out 100 characters
+                    var start = first_occur - 20;
+                    var end = first_occur + 80;
+                    if(start < 0){
+                      start = 0;
+                    }
+                    if(start == 0){
+                      end = 50;
+                    }
+                    if(end > content.length){
+                      end = content.length;
+                    }
+                    var match_content = content.substring(start, end);
+                    // highlight all keywords
+                    keywords.forEach(function(keyword){
+                      var regS = new RegExp(keyword, "gi");
+                      match_content = match_content.replace(regS, "<b class=\"search-keyword\">"+keyword+"</b>");
+                    });
+
+                    str += "<p class=\"search-result\">" + match_content +"...</p>"
+                  }
+                  str += "</li>";
+                }
+              })};
+            str += "</ul>";
+            if (matchcounts == 0) { str = '<div id="no-result"><i class="fa fa-frown-o fa-5x" /></div>' }
+            if (keywords == "") { str = '<div id="no-result"><i class="fa fa-search fa-5x" /></div>' }
+            $resultContent.innerHTML = str;
+          });
+          proceedsearch();
+        }
+      });}
+
+    // handle and trigger popup window;
+    $('.popup-trigger').click(function(e) {
+      e.stopPropagation();
+      if (isfetched == false) {
+        searchFunc(path, 'local-search-input', 'local-search-result');
+      } else {
+        proceedsearch();
+      };
+    });
+
+    $('.popup-btn-close').click(function(e){
+      $('.popup').hide();
+      $(".popoverlay").remove();
+      $('body').css('overflow', '');
+    });
+    $('.popup').click(function(e){
+      e.stopPropagation();
+    });
+  </script>
+
+
+  
+
+  
+
+  
+
+  
+
+
+</body>
+</html>
